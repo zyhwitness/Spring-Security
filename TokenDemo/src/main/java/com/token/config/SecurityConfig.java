@@ -45,9 +45,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                // 对于登录接口 允许匿名访问
+                //对于登录接口允许匿名访问（未登录状态可以访问，已登录携带token不允许访问）
                 .antMatchers("/user/login").anonymous()
-                // 除上面外的所有请求全部需要鉴权认证
+                //直接放行
+                .antMatchers("/hello").permitAll()
+                //除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated();
 
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
