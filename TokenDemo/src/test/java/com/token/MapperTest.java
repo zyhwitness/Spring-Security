@@ -1,6 +1,7 @@
 package com.token;
 
 import com.token.domain.User;
+import com.token.mapper.MenuMapper;
 import com.token.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,15 @@ public class MapperTest {
         //System.out.println(encode);
         System.out.println(encode1);
 
+    }
+
+    @Autowired
+    private MenuMapper menuMapper;
+
+    @Test
+    public void testSelectPermsByUserId(){
+        List<String> list = menuMapper.selectPermsByUserId(1L);
+        System.out.println(list);
     }
 
 

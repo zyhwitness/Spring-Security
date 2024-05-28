@@ -16,7 +16,7 @@ public class HelloController {
 
     @RequestMapping("/hello")
     //调用hasAuthority方法来判断是否有权限访问，具有test权限才能访问
-    @PreAuthorize("hasAuthority('test111')")
+    @PreAuthorize("hasAuthority('system:test:list')")
     public String hello(){
         return "hello";
     }
