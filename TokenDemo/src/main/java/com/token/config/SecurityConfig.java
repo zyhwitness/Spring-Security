@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     //创建BCryptPasswordEncoder注入容器
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -71,5 +71,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(authenticationEntryPoint)
                 //配置授权失败处理器
                 .accessDeniedHandler(accessDeniedHandler);
+
+        //允许跨域
+        http.cors();
     }
 }
